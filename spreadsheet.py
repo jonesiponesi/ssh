@@ -20,5 +20,7 @@ class SpreadSheet:
         except ValueError:
             if value.startswith("'") and value.endswith("'"):
                 return value[1:-1]
+            if value.startswith("=") and value[1:].startswith("'") and value[-1] == "'":
+                return value[2:-1]
             return "#Error"
 
