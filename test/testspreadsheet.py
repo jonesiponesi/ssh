@@ -76,3 +76,4 @@ class TestSpreadSheet(TestCase):
         spreadsheet.set("A1", "=1+B1")
         spreadsheet.set("B1", "3")
         self.assertEqual(4, spreadsheet.evaluate("A1"))
+
