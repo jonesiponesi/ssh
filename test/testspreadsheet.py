@@ -70,3 +70,9 @@ class TestSpreadSheet(TestCase):
         spreadsheet = SpreadSheet()
         spreadsheet.set("A1", "=1+3.5")
         self.assertEqual("#Error", spreadsheet.evaluate("A1"))
+
+    def test_evaluate_with_valid_arithmetic_operator_and_reference(self):
+        spreadsheet = SpreadSheet()
+        spreadsheet.set("A1", "=1+B1")
+        spreadsheet.set("B1", "3")
+        self.assertEqual(4, spreadsheet.evaluate("A1"))

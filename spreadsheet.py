@@ -46,6 +46,15 @@ class SpreadSheet:
 
             # Evaluate arithmetic expressions
             try:
+                # Replace cell references in the expression with their evaluated results
+                for cell_name in self._cells:
+                    if cell_name in expression:
+                        cell_value = self.evaluate(cell_name)
+                        if isinstance(cell_value, int):
+                            expression = expression.replace(cell_name, str(cell_value))
+                        else:
+                            return "#Error"
+
                 # Safely evaluate the expression, ensuring it doesn't yield floats
                 result = eval(expression)
                 if isinstance(result, int):
@@ -56,5 +65,4 @@ class SpreadSheet:
                 return "#Error"  # Return error for any issues during evaluation
 
         return "#Error"  # Fallback for any unrecognized formats
-
 
