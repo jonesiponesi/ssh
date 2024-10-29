@@ -44,3 +44,9 @@ class TestSpreadSheet(TestCase):
         spreadsheet.set("A1", "=B1")
         spreadsheet.set("B1", "42")
         self.assertEqual(42, spreadsheet.evaluate("A1"))
+
+    def test_evaluate_reference_with_invalid_number(self):
+        spreadsheet = SpreadSheet()
+        spreadsheet.set("A1", "=B1")
+        spreadsheet.set("B1", "42.5")
+        self.assertEqual("#Error", spreadsheet.evaluate("A1"))
