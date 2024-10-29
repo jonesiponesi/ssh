@@ -50,3 +50,8 @@ class TestSpreadSheet(TestCase):
         spreadsheet.set("A1", "=B1")
         spreadsheet.set("B1", "42.5")
         self.assertEqual("#Error", spreadsheet.evaluate("A1"))
+
+    def test_evaluate_with_arithmetic_operators(self):
+        spreadsheet = SpreadSheet()
+        spreadsheet.set("A1", "=1+3")
+        self.assertEqual(4, spreadsheet.evaluate("A1"))
