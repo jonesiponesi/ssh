@@ -56,3 +56,7 @@ class TestSpreadSheet(TestCase):
         spreadsheet.set("A1", "=1+3")
         self.assertEqual(4, spreadsheet.evaluate("A1"))
 
+    def test_evaluate_with_arithmetic_operators_with_operator_precedence(self):
+        spreadsheet = SpreadSheet()
+        spreadsheet.set("A1", "=1+3*2")
+        self.assertEqual(7, spreadsheet.evaluate("A1"))
