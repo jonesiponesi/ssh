@@ -3,7 +3,6 @@ class SpreadSheet:
 
     def __init__(self):
         self._cells = {}
-        self._evaluating = set()
 
     def set(self, cell: str, value: str) -> None:
         self._cells[cell] = value
@@ -15,5 +14,9 @@ class SpreadSheet:
         value = self.get(cell)
         if value.isdigit():
             return int(value)
-        return value
+        try:
+            float(value)
+            return "#Error"
+        except ValueError:
+            return value
 
