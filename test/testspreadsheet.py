@@ -65,3 +65,8 @@ class TestSpreadSheet(TestCase):
         spreadsheet = SpreadSheet()
         spreadsheet.set("A1", "=1/0")
         self.assertEqual("#Error", spreadsheet.evaluate("A1"))
+
+    def test_evaluate_with_invalid_arithmetic_operators(self):
+        spreadsheet = SpreadSheet()
+        spreadsheet.set("A1", "=1+3.5")
+        self.assertEqual("#Error", spreadsheet.evaluate("A1"))
