@@ -31,11 +31,10 @@ class SpreadSheet:
                         return referenced_value
                     else:
                         return "#Error"
-                else:
-                    try:
-                        # Evaluate arithmetic expressions
-                        return eval(value[1:])
-                    except:
-                        return "#Error"
+                try:
+                    # Evaluate arithmetic expressions
+                    return eval(value[1:])
+                except:
+                    return "#Error"
             return "#Error"
 
