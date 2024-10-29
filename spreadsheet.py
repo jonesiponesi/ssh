@@ -22,8 +22,10 @@ class SpreadSheet:
                 return value[1:-1]
             if value.startswith("="):
                 if value[1:].isdigit():
-                    return value[1:]
+                    return str(value[1:])
                 elif value[1:].startswith("'") and value[-1] == "'":
                     return value[2:-1]
+                elif value[1:] in self._cells:
+                    return self.evaluate(value[1:])
             return "#Error"
 
